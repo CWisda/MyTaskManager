@@ -1,0 +1,11 @@
+/* @media only screen and (min-width: 576px) {
+    .list-group container {
+        display: block;
+    }
+} */
+
+
+.container {
+    max-width: 75%;
+    max-height: 25%;
+}
