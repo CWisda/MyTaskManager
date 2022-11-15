@@ -1,7 +1,6 @@
 // declare variables
-const newForm = document.getElementById('form');
-const submit = document.getElementById('submit-btn');
-const taskManager = new TaskManager();
+
+
 // need to define 
 const name = document.querySelector('#taskName');  
 const assignedTo = document.querySelector('#assignTo');
@@ -9,7 +8,11 @@ const date = document.querySelector('#date');
 const status = document.querySelector('#taskStatus');  
 const description = document.querySelector('#description');
 const taskHtml = createTaskHtml(name, description, assignedTo, date, status);
-
+const newForm = document.getElementById('form');
+const submit = document.getElementById('submit-btn');
+const taskManager = new TaskManager();
+taskManager.load();
+taskManager.render();
 //ask about console 
 // console.log(taskHtml);
 
@@ -117,18 +120,21 @@ For now, if your New Task form is on a seperate page to your Task List, copy it 
 //console.log(newTask)
 
 
-const taskList = document.querySelector("#taskList");
-
-taskList.addEventListener('click', (event) => { // "event" here is the event parameter
-    if (event.target.classList.contains("done-button") === true) {
-        const parentTask = event.target.parentElement;
+const taskList = document.querySelector('#taskList');
+taskList.addEventListener('click', (event) => {
+    if (event.target.classList.contains('done-button') === true) {
+        const parentTask = event.target.parentElement.parentElement.parentElement;
         const taskId = Number(parentTask.dataset.taskId);
         const task = taskManager.getTaskById(taskId);
-            task.status = 'DONE';
-            taskManager.render()
-    } 
-  
+        task.status = 'DONE';
+        taskManager.save();
+        taskManager.render();
+    }
+    if (event.target.classList.contains('delete-button') === true) {
+        const parentTask = event.target.parentElement.parentElement.parentElement;
+        const taskId = Number(parentTask.dataset.taskId);
+        taskManager.deleteTask(taskId);
+        taskManager.save();
+        taskManager.render();
+    }
 });
-
-
-

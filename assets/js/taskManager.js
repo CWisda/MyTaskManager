@@ -67,10 +67,32 @@ getTaskById(taskId) {
     let foundTask = taskId; 
     for (let i = 0; i < this.tasks.length; i++) {
     let task = this.tasks[i];
-    if (task.id == taskId) {
+    if (task.id === taskId) {
         foundTask = task;
-        return(foundTask)
     }
 } 
-};
+    return foundTask;
+}
+save() {
+    const tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson);
+    const currentId = JSON.stringify(this.currentId);
+    localStorage.setItem('currentId', currentId);
+}
+load() {
+    const tasksJson = localStorage.getItem('tasks');
+    this.tasks = JSON.parse(tasksJson);
+    const currentId = localStorage.getItem('currentId');
+    this.currentId = Number(currentId);   
+}
+deleteTask(taskId) {
+    let newTasks = [];
+    for (let i = 0; i < this.tasks.length; i++) {
+        let task = this.tasks[i];
+        if (task.id != taskId) {
+            newTasks.push(task)
+        }
+    }
+        this.tasks = newTasks;
+}
 }
