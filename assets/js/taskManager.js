@@ -1,4 +1,3 @@
-
 const createTaskHtml = (id, name, description, assignedTo, date, status) => {
 
     const html = `   
