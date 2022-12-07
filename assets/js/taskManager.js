@@ -95,3 +95,5 @@ deleteTask(taskId) {
         this.tasks = newTasks;
 }
 }
+// might have to comment this out 
+exports.TaskManager = TaskManager;
