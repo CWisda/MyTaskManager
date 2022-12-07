@@ -1,0 +1,26 @@
+{
+  "name": "mytaskmanager",
+  "version": "1.0.0",
+  "description": "This task manager was built with HTML, CSS, JavaScript, Bootstrap and JQuery",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CWisda/MyTaskManager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CWisda/MyTaskManager/issues"
+  },
+  "homepage": "https://github.com/CWisda/MyTaskManager#readme",
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  }
+}
